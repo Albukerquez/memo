@@ -6,8 +6,10 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
 gem 'coffee-rails', '~> 4.2'
 gem 'friendly_id'
+gem 'image_processing'
 gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
+gem 'mini_magick'
 gem 'pg', '~> 0.18'
 gem 'pry'
 gem 'pry-rails'

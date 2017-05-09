@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Image data:</strong>
   <% if @post.image.present? %>
     <%= image_tag @post.image_url %>
   <% end %>
