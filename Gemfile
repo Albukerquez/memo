@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
+gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.2'
 gem 'friendly_id'
 gem 'image_processing'
@@ -24,7 +25,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development, :test do
   gem 'capybara', '~> 2.13.0'
   gem 'rspec-rails', '~> 3.5'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver'  
 end
 
 group :development do

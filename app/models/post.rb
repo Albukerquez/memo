@@ -1,6 +1,9 @@
+# frozen_string_literal: true
+
 class Post < ApplicationRecord
   include ImageUploader::Attachment.new(:image)
 
+  validates :image, presence: true
   validates :description, presence: true
 
   extend FriendlyId
