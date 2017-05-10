@@ -1,11 +1,10 @@
-p id="notice" = notice
-
-.posts-wrapper.row
-  -@posts.each do |post|
-    .post
-      .post-head
-        .name Ben Walker
-      .image.center-block
-        = link_to (image_tag post.image.url, class:'img-responsive'), post_path(post)
-      p.title
-        =post.title
+.container
+  .posts-wrapper.row
+    -@posts.each do |post|
+      .post
+        .post-head
+          .name Allah Akbar
+        .image.center-block
+          = link_to (image_tag post.image.url, class:'img-responsive'), post_path(post)
+        p.title
+          =post.title
