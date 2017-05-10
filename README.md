@@ -4,6 +4,6 @@
 
 * 1.slim
 
-* 2. shrine
+* 2.shrine
 
-* 3. devise
+* 3.devise
