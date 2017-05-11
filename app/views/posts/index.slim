@@ -1,10 +1,2 @@
-.container
-  .posts-wrapper.row
-    -@posts.each do |post|
-      .post
-        .post-head
-          .name Allah Akbar
-        .image.center-block
-          = link_to (image_tag post.image.url, class:'img-responsive'), post_path(post)
-        p.title
-          =post.title
+div class="row"
+  = render @posts
