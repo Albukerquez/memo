@@ -6,6 +6,8 @@ git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'coffee-rails', '~> 4.2'
+gem 'devise', git: 'https://github.com/gogovan/devise.git', branch: 'rails-5.1'
+gem 'erubis'
 gem 'friendly_id'
 gem 'image_processing'
 gem 'jbuilder', '~> 2.5'

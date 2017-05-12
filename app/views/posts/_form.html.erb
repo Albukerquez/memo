@@ -11,27 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
-  </div>
+<ul class="list-group list-group-flush">
+  <li class="list-group-item">
+    <div class="field">
+      <%= form.label "Заголовок" %>
+      <%= form.text_field :title, id: :post_title, class: 'form-control' %>
+    </div>
+  </li>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :post_description %>
-  </div>
+  <li class="list-group-item">
+    <div class="field">
+      <%= form.label "Описание" %>
+      <%= form.text_area :description, id: :post_description, class: 'form-control' %>
+    </div>
+  </li>
 
-  <div class="field">
-    <% if post.image.present? %>
-      <%= image_tag post.image_url %>
-    <% end %>
+  <li class="list-group-item">
+    <div class="field">
+      <% if post.image.present? %>
+        <%= image_tag post.image_url %>
+      <% end %>
 
-    <%= form.label :image %>
-    <%= form.hidden_field :image, value: post.cached_image_data %>
-    <%= form.file_field :image %>
-  </div>
+      <%= form.label "Изображение" %>
+      <%= form.hidden_field :image, value: post.cached_image_data %>
+      <%= form.file_field :image, class: "form-control-file" %>
+    </div>
+  </li>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <li class="list-group-item">
+    <div class="actions">
+      <%= form.submit "Отправить", class: 'btn btn-success' %>
+    </div>
+  </li>
+</ul>
+
 <% end %>
