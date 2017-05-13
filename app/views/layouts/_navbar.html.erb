@@ -6,15 +6,21 @@
     <%= link_to 'Мемо', root_path, class: 'navbar-brand' %>
     <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-          <li class="nav-item active">
-            <%= link_to 'Новый пост', new_post_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Войти', 'new_user_session_path', class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Регистрация', 'new_user_registration_path', class: "nav-link" %>
-          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to 'Новый пост', new_post_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to 'Войти', new_user_session_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Регистрация', new_user_registration_path, class: "nav-link" %>
+            </li>
+          <% end %>
         </ul>
     </div>
   </div>

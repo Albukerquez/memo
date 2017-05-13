@@ -1,8 +1,8 @@
+<div class="container col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2">
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% post.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,23 +11,17 @@
     </div>
   <% end %>
 
-<ul class="list-group list-group-flush">
-  <li class="list-group-item">
-    <div class="field">
+    <div class="form-group">
       <%= form.label "Заголовок" %>
       <%= form.text_field :title, id: :post_title, class: 'form-control' %>
     </div>
-  </li>
 
-  <li class="list-group-item">
-    <div class="field">
+    <div class="form-group">
       <%= form.label "Описание" %>
       <%= form.text_area :description, id: :post_description, class: 'form-control' %>
     </div>
-  </li>
 
-  <li class="list-group-item">
-    <div class="field">
+    <div class="form-group">
       <% if post.image.present? %>
         <%= image_tag post.image_url %>
       <% end %>
@@ -36,13 +30,11 @@
       <%= form.hidden_field :image, value: post.cached_image_data %>
       <%= form.file_field :image, class: "form-control-file" %>
     </div>
-  </li>
 
-  <li class="list-group-item">
-    <div class="actions">
-      <%= form.submit "Отправить", class: 'btn btn-success' %>
+    <div class="actions text-center">
+        <%= form.submit "Отправить", class: 'btn btn-success' %>
     </div>
-  </li>
-</ul>
 
 <% end %>
+<br>
+</div>
