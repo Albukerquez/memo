@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
-  prepend_before_action :verify_user, only: [:destroy]
+  skip_before_action :verify_authenticity_token
+  prepend_before_action :verify_user, only: %i(destroy)
 
   private
 
