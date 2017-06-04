@@ -3,12 +3,18 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <%= link_to 'Мемо', root_path, class: 'navbar-brand' %>
+    <%= link_to 'Приложуха', root_path, class: 'navbar-brand' %>
     <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+            <li class="nav-item">
+              <%= link_to 'Посты', posts_path, class: "nav-link" %>
+            </li>
           <% if user_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to 'Новый пост', new_post_path, class: "nav-link" %>
+            <li class="nav-item">
+              <%= link_to current_user.user_name, '#', class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Новый пост', new_post_path, class: "nav-link" if policy(Post).new? %>
             </li>
             <li class="nav-item">
               <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-link" %>

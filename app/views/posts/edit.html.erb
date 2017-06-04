@@ -4,5 +4,7 @@
 
 <%= link_to 'Показать', @post, class: 'btn btn-sm btn-warning' %>
 <%= link_to 'Вернуться', posts_path, class: 'btn btn-sm btn-success' %>
+<% if policy(Post).destroy? %>
 <%= link_to 'Удалить', post_path(@post), method: :delete,
-data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+data: { confirm: 'Вы уверены?' }, class: 'btn btn-sm btn-danger' %>
+<% end %>
