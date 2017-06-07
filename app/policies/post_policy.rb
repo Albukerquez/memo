@@ -4,12 +4,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && user.guest?
-  end
-
-  def new?
-    user.present? && user.guest?
-    create?
+    user.present?
   end
 
   def show?
@@ -17,13 +12,13 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    return true if user.present? && user.admin?
-
+    return true if user.present?
     user.present? && user == record.user
   end
 
   def destroy?
-    user.present? && user.admin?
+    return true if user.present?
+    user.present? && user == record.user
   end
 
   private

@@ -1,6 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   skip_before_action :verify_authenticity_token
-  # prepend_before_action :verify_user, only: %i(create)
   after_action :verify_authorized, unless: :devise_controller?
 
   private

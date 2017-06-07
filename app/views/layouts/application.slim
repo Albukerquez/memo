@@ -1,6 +1,8 @@
 doctype html
 html
   head
+    title Приложуха
+    = csrf_meta_tags
     = stylesheet_link_tag 'web/application', media: 'all', data: { turbolinks_track: 'reload' }
     = javascript_include_tag 'application', data: { turbolinks_track: 'reload' }
   body
