@@ -7,6 +7,6 @@ class ImageUploader < Shrine
   plugin :processing
 
   process(:store) do |io|
-    resize_to_limit!(io.download, 800, 800)
+    resize_to_limit!(io.download, 200, 200)
   end
 end

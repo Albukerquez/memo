@@ -2,6 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i(show edit update destroy)
+  before_action :owned_post, only: %i(edit update destroy)
 
   def index
     @posts = Post.all
@@ -22,23 +23,28 @@ class PostsController < ApplicationController
     @post.user = current_user
     authorize @post
     if @post.save
-      redirect_to @post, notice: 'Пост успешно создан.'
+      redirect_to @post
+      flash[:success] = 'Пост успешно создан.'
     else
+      flash.now[:error] = 'Ваш пост не может быть создан.'
       render :new
     end
   end
 
   def update
     if @post.update(post_params)
-      redirect_to @post, notice: 'Пост успешно обновлен.'
+      redirect_to @post
+      flash[:success] = 'Пост обновлён.'
     else
-      render :edit, notice: 'Ошибка'
+      flash.now[:error] = 'Обновить не удалось.'
+      render :edit
     end
   end
 
   def destroy
     @post.destroy
-    redirect_to posts_path, notice: 'Пост был успешно удалён.'
+    redirect_to posts_path
+    flash[:notice] = 'Пост был успешно удалён.'
   end
 
   private
@@ -50,5 +56,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :description, :image)
+  end
+
+  def owned_post
+    unless current_user == @post.user
+      flash[:alert] = 'Вы не можете редактировать чужие посты'
+      redirect_to root_path
+    end
   end
 end
