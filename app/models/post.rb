@@ -3,6 +3,7 @@
 class Post < ApplicationRecord
   validates :user_id, presence: true
   belongs_to :user
+  has_many :comments, dependent: :destroy
   include ImageUploader::Attachment.new(:image)
 
   validates :image, presence: true
@@ -15,3 +16,4 @@ class Post < ApplicationRecord
     title_changed?
   end
 end
+

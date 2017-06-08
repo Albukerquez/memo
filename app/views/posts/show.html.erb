@@ -14,11 +14,11 @@
 <br>
 <div class="text-center">
     <% if policy(Post).edit? %>
-      <%= link_to 'Редактировать', edit_post_path(@post), class: 'btn btn-warning' %>
+      <%= link_to 'Редактировать', edit_post_path(@post) %> |
     <% end %>
-    <%= link_to 'Вернуться', posts_path, class: 'btn btn-success' %>
+    <%= link_to 'Вернуться', posts_path %> |
     <% if policy(Post).destroy? %>
       <%= link_to 'Удалить', post_path(@post), method: :delete,
-      data: { confirm: 'Вы уверены?' }, class: 'btn btn-danger' %>
+      data: { confirm: 'Вы уверены?' } %>
     <% end %>
 </div>
