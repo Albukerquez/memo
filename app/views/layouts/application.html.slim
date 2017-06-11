@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    title Приложуха
+    title
+      = full_title(yield(:title))
     = csrf_meta_tags
     = stylesheet_link_tag 'web/application', media: 'all', data: { turbolinks_track: 'reload' }
     = javascript_include_tag 'application', data: { turbolinks_track: 'reload' }
@@ -11,4 +12,4 @@ html
       -flash.each do |name, msg|
         = content_tag :div, msg, class: [:alert, alert_for(name)]
       = yield
-
+    = render 'layouts/footer'

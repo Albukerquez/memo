@@ -6,4 +6,14 @@ module ApplicationHelper
     notice:  'alert-info'
   } [flash_type.to_sym] || flash_type.to_s
   end
+
+  # Return the full title on a per-page basis.
+  def full_title(page_title = '')
+    base_title = 'Memes'
+    if page_title.empty?
+      base_title
+    else
+      "#{page_title} - #{base_title}"
+    end
+  end
 end

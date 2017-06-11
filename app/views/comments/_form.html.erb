@@ -1,0 +1,13 @@
+<h2>Add a comment:</h2>
+<%= form_with scope: @post.comments.build do |form| %>
+
+    <div class="form-group">
+      <%= form.label "Комментарий" %>
+      <%= form.text_field :content, class: 'form-control' %>
+    </div>
+
+    <div class="actions text-center">
+        <%= form.submit "Оставить комментарий", class: 'btn btn-success' %>
+    </div>
+
+<% end %>

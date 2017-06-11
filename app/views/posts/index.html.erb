@@ -1,3 +1,4 @@
-  <div class="card-deck">
-    <%= render @posts %>
-  </div>
+<% provide(:title, 'Посты') %>
+<div class="jumbotron card-deck">
+  <%= render @posts %>
+</div>

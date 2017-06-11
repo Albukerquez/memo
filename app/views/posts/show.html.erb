@@ -1,3 +1,4 @@
+<% provide(:title, 'Пост') %>
 <div class="row">
   <div class="col-md-1 col-lg-2"></div>
   <div class="col-md-10 col-lg-8 text-xs-center">
@@ -11,6 +12,8 @@
     </div>
   </div>
 </div>
+<br>
+<% render 'comments/form' %>
 <br>
 <div class="text-center">
     <% if policy(Post).edit? %>

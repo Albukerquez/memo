@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
+  attr_accessor :content, :name
+
   validates :user_id, presence: true
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -16,4 +18,3 @@ class Post < ApplicationRecord
     title_changed?
   end
 end
-

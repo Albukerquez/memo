@@ -1,5 +1,8 @@
-<h1 class="text-center">Новый пост</h1>
+<% provide(:title, 'Новый Пост') %>
+<div class="jumbotron">
+  <h1 class="text-center">Новый пост</h1>
 
-<%= render 'form', post: @post %>
+  <%= render 'form', post: @post %>
 
-<%= link_to 'Назад', posts_path, class: 'btn btn-primary' %>
+  <%= link_to 'Назад', posts_path, class: 'btn btn-primary' %>
+</div>
