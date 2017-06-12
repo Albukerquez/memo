@@ -14,6 +14,6 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from Pundit::NotAuthorizedError do
-    redirect_to root_url || request.referer, alert: 'У вас нет доступа к этой странице'
+    redirect_to root_url || request.referer, alert: 'У вас нет прав для просмотра данной страницы'
   end
 end

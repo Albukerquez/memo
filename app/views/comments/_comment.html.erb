@@ -1,0 +1,15 @@
+<p>
+  <strong>Комментатор:</strong>
+  <%= @post.user.user_name %>
+</p>
+
+<p>
+  <strong>Комментарий :</strong>
+  <%= comment.content %>
+</p>
+
+<p>
+  <%= link_to 'Удалить Комментарий', [comment.post, comment],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+</p>

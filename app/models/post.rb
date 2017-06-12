@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  attr_accessor :content, :name
+  # attr_accessor :content
 
   validates :user_id, presence: true
   belongs_to :user
