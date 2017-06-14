@@ -108,6 +108,7 @@ GEM
     erubi (1.6.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    fastimage (2.1.0)
     ffi (1.9.18)
     flay (2.9.0)
       erubis (~> 2.7.0)
@@ -340,6 +341,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise!
   erubis
+  fastimage
   friendly_id
   image_processing
   jbuilder (~> 2.5)

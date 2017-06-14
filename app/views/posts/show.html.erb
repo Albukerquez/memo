@@ -7,16 +7,19 @@
     <hr>
     <div class="text-center">
       <% if @post.image.present? %>
-        <%= image_tag @post.image_url %>
+        <%= image_tag @post.image_url(:original) %>
       <% end %>
     </div>
   </div>
 </div>
 <br>
-<h2>Comments</h2>
-<%= render @post.comments %>
-
-<h2>Add a comment:</h2>
+<h2>Комментарии:</h2>
+<% if @post.comments.empty? %>
+    <p>Комментариев пока нет.</p>
+  <% else %>
+    <%= render @post.comments %>
+<% end %>
+<h2>Оставить комментарий:</h2>
 <%= render 'comments/form' %>
 <br>
 <div class="text-center">
@@ -29,3 +32,5 @@
       data: { confirm: 'Вы уверены?' } %>
     <% end %>
 </div>
+
+

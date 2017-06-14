@@ -10,7 +10,7 @@ class ImageUploader < Shrine
   plugin :logging, logger: Rails.logger
   plugin :remove_attachment
   plugin :store_dimensions
-  plugin :versions, names: %i(original thumb)
+  plugin :versions, names: %i(original large medium small thumb)
 
   Attacher.validate do
     validate_max_size 2.megabytes, message: 'is too large (max is 2 MB)'
@@ -21,13 +21,13 @@ class ImageUploader < Shrine
   include ImageProcessing::MiniMagick
 
   def process(io, context)
-    case context[:phase]
-    when :store
-      thumb = resize_to_limit!(io.download, 200, 200)
-      { original: io, thumb: thumb }
+    if context[:phase] == :store
+      size700 = resize_to_limit!(io.download, 700, 700)
+      size500 = resize_to_limit(size700,      500, 500)
+      size300 = resize_to_limit(size500,      300, 300)
+      thumb   = resize_to_limit(size300,      200, 200)
+
+      { original: io, large: size700, medium: size500, small: size300, thumb: thumb }
     end
   end
-  # process(:store) do |io|
-  #   resize_to_limit!(io.download, 400, 400)
-  # end
 end

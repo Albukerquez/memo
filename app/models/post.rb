@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  # attr_accessor :content
+  attr_accessor :content
 
-  validates :user_id, presence: true
   belongs_to :user
   has_many :comments, dependent: :destroy
   include ImageUploader::Attachment.new(:image)
 
   validates :image, presence: true
   validates :description, presence: true
+  validates :user_id, presence: true
 
   extend FriendlyId
   friendly_id :title, use: :slugged

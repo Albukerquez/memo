@@ -1,9 +1,11 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
+  <%= current_user.user_name %>
   <p>
     <%= f.label 'Комментарий' %><br>
-    <%= f.text_area :content, class: 'form-control' %>
+    <%= f.text_area :content %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Откомментить' , class: 'btn btn-success' %>
   </p>
 <% end %>
+
