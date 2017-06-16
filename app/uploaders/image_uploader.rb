@@ -1,6 +1,6 @@
-require 'image_processing/mini_magick'
-
 class ImageUploader < Shrine
+  include ImageProcessing::MiniMagick
+
   plugin :processing
   plugin :validation_helpers
   plugin :remove_invalid
@@ -18,8 +18,6 @@ class ImageUploader < Shrine
     validate_mime_type_inclusion ['image/jpeg', 'image/png', 'image/gif', 'image/jpg']
   end
 
-  include ImageProcessing::MiniMagick
-
   def process(io, context)
     if context[:phase] == :store
       size700 = resize_to_limit!(io.download, 700, 700)
@@ -31,3 +29,5 @@ class ImageUploader < Shrine
     end
   end
 end
+
+

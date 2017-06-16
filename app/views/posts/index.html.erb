@@ -1,4 +1,6 @@
 <% provide(:title, 'Посты') %>
-<div class="jumbotron card-deck">
-  <%= render @posts %>
-</div>
+<% @posts.each do |post| %>
+  <%= render 'post', post: post %>
+<% end %>
+
+

@@ -1,11 +1,14 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-  <%= current_user.user_name %>
-  <p>
-    <%= f.label 'Комментарий' %><br>
-    <%= f.text_area :content %>
-  </p>
-  <p>
-    <%= f.submit 'Откомментить' , class: 'btn btn-success' %>
-  </p>
+<% if user_signed_in? %>
+  <%= form_for([@post, @post.comments.build], remote: true) do |f| %>
+    <%= current_user.user_name %>
+    <p>
+      <%= f.text_area :content, placeholder: 'Оставить комментарий...' %>
+    </p>
+    <p>
+      <%= f.submit 'Откомментить' , class: 'btn btn-success' %>
+    </p>
+  <% end %>
+<% else %>
+    <%= link_to 'Войдите, чтобы оставить комментарий', new_user_session_path %> или
+    <%= link_to 'Зарегистрируйтесь', new_user_registration_path %>
 <% end %>
-

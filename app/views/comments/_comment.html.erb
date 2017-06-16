@@ -1,21 +1,13 @@
-<div class="comment_content">
-    <p>
-      <strong>Комментатор:</strong>
-      <%=  comment.user.user_name %>
-    </p>
-    <p>
-      <strong>Комментарий :</strong>
-      <%= comment.content %>
-    </p>
-    <p>
-      <strong>Время :</strong>
-      <%= time_ago_in_words(comment.created_at) %>
-    </p>
+<div id="comment">
+  <div class="user-name">
+    <%= comment.user.user_name %>
+  </div>
+  <div class="comment-content">
+    <%= comment.content %>
+  </div>
+  <% if policy(Comment).destroy? %>
+    <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do %>
+      <span class="fa fa-times delete-comment"></span>
+    <% end %>
+  <% end %>
 </div>
-<p>
-  <%= link_to 'Удалить Комментарий', [comment.post, comment],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-</p>
-
-

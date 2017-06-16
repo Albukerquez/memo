@@ -1,11 +1,46 @@
-<div class='col-sm-6 col-lg-4'>
-  <div class="card hvr-grow">
-    <div class="card-block">
-    <%= link_to post do %>
-      <h4 class="card-title"><%= post.title %></h4>
-      <div class="card-topper"><%= image_tag post.image_url(:thumb) %></div>
-    <% end %>
-        <p class="card-text"><%= truncate(post.description, length: 130) %></p>
+<% provide(:title, 'Пост') %>
+<div class="posts-wrapper row">
+  <div class="post col-12">
+    <div class="post-head">
+      <div class="thumb-img">
+      </div>
+      <div class="user-name">
+        <%= post.user.user_name %>
+      </div>
+      <div class="time-ago">
+        <%= time_ago_in_words post.created_at %>
+      </div>
     </div>
+    <div class="image text-center">
+      <% if post.image.present? %>
+        <%= link_to (image_tag post.image_url(:original), class: 'image-responsive'), post_path(post) %>
+      <% end %>
+    </div>
+    <div class="post-bottom">
+      <div class="description">
+        <div class="description-content">
+          <div class="user-name">
+            <%= post.user.user_name %>
+          </div>
+          <%= post.description %>
+        </div>
+      </div>
+      <% if post.comments %>
+      <div class="comments" id="comments_<%= post.id %>">
+          <%= render post.comments, post: post %>
+      </div>
+      <% end %>
+    </div>
+    <div class="comment-like-form row">
+      <div class="like-button col-1">
+        <%= link_to '#' do %>
+          <i class="fa fa-heart-o"></i>
+        <% end %>
+      </div>
+      <div class="comment-form col-11">
+        <%= form_for [post, post.comments.build], remote: true do |f| %>
+          <% f.text_field :content, placeholder: 'Добавить комментарий', class: 'form-control comment_content',type: 'text', id: "comment_content_#{post.id}" %>
+        <% end %>
+      </div>
   </div>
 </div>
