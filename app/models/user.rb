@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_accessor :content, :comments
+  attr_accessor :content, :comments, :posts
   has_many :posts, dependent: :destroy
   has_many :comments, through: :posts
   # Include default devise modules. Others available are:

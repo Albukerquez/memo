@@ -7,27 +7,25 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to root_path }
+        format.html { redirect_to request.referer || posts_path }
         format.js
       end
-      flash[:success] = 'Вы успешно оставили комментарий'
-      redirect_to request.referer || root_path
     else
       flash[:error] = 'Проверьте поле ввода, что то пошло не так'
-      redirect_to post_path(@post)
+      redirect_to request.referer || posts_path
     end
   end
 
   def destroy
     @comment = @post.comments.find(params[:id])
-    @comment.destroy
     authorize @comment
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.js
+    if @comment.user_id == current_user.id
+      @comment.destroy
+      respond_to do |format|
+        format.html { redirect_to request.referer || posts_path }
+        format.js
+      end
     end
-    flash[:success] = 'Комментарий удалён.'
-    redirect_to post_path(@post)
   end
 
   private

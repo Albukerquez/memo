@@ -4,8 +4,8 @@ class CommentPolicy < ApplicationPolicy
   end
 
   def destroy?
-    return true if user.present?
-    user.present? && user == record.user
+    return true if user.present? && user.id == comment.user_id
+    false
   end
 
   private

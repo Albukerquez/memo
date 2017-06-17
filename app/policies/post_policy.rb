@@ -13,12 +13,12 @@ class PostPolicy < ApplicationPolicy
 
   def update?
     return true if user.present?
-    user.present? && user == record.user
+    user.present? && user == post.user
   end
 
   def destroy?
     return true if user.present?
-    user.present? && user == record.user
+    user.present? && user == post.user
   end
 
   private

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :owned_post, only: %i(edit update destroy)
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(:created_at)
     authorize @posts
   end
 
@@ -42,7 +42,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
+    if @post.present?
+      @post.destroy
+    else
+      skip_authorization
+    end
     redirect_to posts_path
     flash[:notice] = 'Пост был успешно удалён.'
   end

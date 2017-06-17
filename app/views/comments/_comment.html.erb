@@ -5,7 +5,7 @@
   <div class="comment-content">
     <%= comment.content %>
   </div>
-  <% if policy(Comment).destroy? %>
+  <% if policy(comment).destroy? %>
     <%= link_to post_comment_path(post, comment), method: :delete, data: { confirm: 'Вы уверены?' }, remote: true do %>
       <span class="fa fa-times delete-comment"></span>
     <% end %>
