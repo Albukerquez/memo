@@ -7,9 +7,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   include ImageUploader::Attachment.new(:image)
 
-  validates :image, presence: true
-  validates :description, presence: true
-  validates :user_id, presence: true
+  validates :user_id, :description, :image, presence: true
+  validates :description, length: { in: 2..20 }
 
   extend FriendlyId
   friendly_id :title, use: :slugged
