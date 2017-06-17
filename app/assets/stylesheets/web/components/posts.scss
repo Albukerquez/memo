@@ -1,8 +1,9 @@
 .posts-wrapper {
   padding-top: 40px;
   margin: 0 auto;
-  max-width: 642px;
+  max-width: 630px;
   width: 100%;
+  position: relative;
 }
 
 .post {
@@ -42,7 +43,7 @@
   .user-name, .comment-content {
     display: inline;
   }
-  .caption {
+  .description {
     margin-bottom: 7px;
   }
   .user-name {
@@ -51,7 +52,7 @@
     color: #125688;
     font-size: 15px;
   }
-  .user-name, .caption-content {
+  .user-name, .description-content {
     display: inline;
   }
   #comment {
@@ -83,7 +84,7 @@
 }
 
 .comment-like-form {
-  padding-top: 24px;
+  // padding-top: 24px;
   margin-top: 13px;
   margin-left: 24px;
   margin-right: 24px;
