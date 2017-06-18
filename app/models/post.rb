@@ -8,12 +8,12 @@ class Post < ApplicationRecord
   include ImageUploader::Attachment.new(:image)
 
   validates :user_id, :description, :image, presence: true
-  validates :description, length: { in: 2..20 }
+  validates :description, length: { in: 2..40 }
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :description, use: :slugged
 
   def should_generate_new_friendly_id?
-    title_changed?
+    description_changed?
   end
 end

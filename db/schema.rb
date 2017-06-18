@@ -26,8 +26,7 @@ ActiveRecord::Schema.define(version: 20170608094933) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "description"
     t.text "image_data"
     t.string "slug"
     t.datetime "created_at", null: false
