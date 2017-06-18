@@ -1,5 +1,5 @@
 <%= render 'post', post: @post %>
-<% if @post.user.id == current_user.id %>
+<% if policy(@post).edit? %>
   <div class="text-center edit-links">
     <%= link_to 'Назад', posts_path %> |
     <%= link_to 'Редактировать', edit_post_path(@post) %>

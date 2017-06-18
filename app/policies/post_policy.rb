@@ -7,6 +7,11 @@ class PostPolicy < ApplicationPolicy
     user.present?
   end
 
+  def edit?
+    return true if user.present? && user.id == post.user_id
+    false
+  end
+
   def show?
     scope.where(id: record.id).exists?
   end

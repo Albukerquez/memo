@@ -30,6 +30,7 @@
       </div>
       <% end %>
     </div>
+    <% if policy(Comment).create? %>
     <div class="comment-like-form row">
       <div class="like-button col-1">
         <%= link_to '#' do %>
@@ -42,5 +43,6 @@
         <% end %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
