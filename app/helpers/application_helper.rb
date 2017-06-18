@@ -16,4 +16,12 @@ module ApplicationHelper
       "#{page_title} - #{base_title}"
     end
   end
+
+  def form_image_select(post)
+    if post.image_data?
+      image_tag post.image_url(:medium), id: 'image-preview', class: 'img-responsive'
+    else
+      image_tag 'welcome.jpg', id: 'image-preview', class: 'img-responsive'
+    end
+  end
 end
