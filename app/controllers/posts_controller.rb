@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :owned_post, only: %i(edit update destroy)
 
   def index
-    @posts = Post.eager_load(:user, :comments).all.order(created_at: :desc).page(params[:page]).per(3)
+    @posts = Post.includes(:user, :comments).all.order(created_at: :desc).page(params[:page]).per(3)
     authorize @posts
   end
 
