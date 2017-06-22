@@ -15,12 +15,12 @@ class CommentsController < ApplicationController
     authorize @comment
     if @comment.save
       respond_to do |format|
-        format.html { redirect_to request.referer || posts_path }
+        format.html { redirect_to request.referer || root_path }
         format.js
       end
     else
       flash[:error] = 'Проверьте поле ввода, что то пошло не так'
-      redirect_to request.referer || posts_path
+      redirect_to request.referer || root_path
     end
   end
 
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     if @comment.user_id == current_user.id
       @comment.destroy
       respond_to do |format|
-        format.html { redirect_to request.referer || posts_path }
+        format.html { redirect_to request.referer || root_path }
         format.js
       end
     end

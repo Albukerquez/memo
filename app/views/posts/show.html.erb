@@ -1,11 +1,11 @@
 <%= render 'post', post: @post %>
 <% if policy(@post).edit? %>
   <div class="text-center edit-links">
-    <%= link_to 'Назад', posts_path %> |
+    <%= link_to 'Назад', root_path %> |
     <%= link_to 'Редактировать', edit_post_path(@post) %>
   </div>
 <% else %>
   <div class="text-center edit-links">
-    <%= link_to 'Назад', posts_path %>
+    <%= link_to 'Назад', root_path %>
   </div>
 <% end %>

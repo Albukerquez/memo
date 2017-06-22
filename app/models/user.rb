@@ -7,6 +7,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  include ImageUploader::Attachment.new(:avatar)
+
   before_save { |user| user.user_name = user.user_name.downcase }
 
   validates :user_name, presence: true, length: { minimum: 4, maximum: 16 }

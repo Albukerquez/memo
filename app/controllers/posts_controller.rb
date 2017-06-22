@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post, only: %i(show edit update destroy)
   before_action :owned_post, only: %i(edit update destroy)
 
@@ -47,7 +48,7 @@ class PostsController < ApplicationController
     else
       skip_authorization
     end
-    redirect_to posts_path
+    redirect_to root_path
     flash[:notice] = 'Пост был успешно удалён.'
   end
 

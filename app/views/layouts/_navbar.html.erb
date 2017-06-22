@@ -6,9 +6,6 @@
     <%= link_to ' | Memogram', root_path, class: 'fa fa-maxcdn fa-lg navbar-brand' %>
     <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
-            <li class="nav-item">
-              <%= link_to 'Посты', posts_path, class: "nav-link" %>
-            </li>
           <% if user_signed_in? %>
             <li class="nav-item">
               <%= link_to current_user.user_name, '#', class: "nav-link" %>

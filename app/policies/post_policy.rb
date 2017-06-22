@@ -13,7 +13,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def show?
-    scope.where(id: record.id).exists?
+    return true if user.present?
   end
 
   def update?

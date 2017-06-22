@@ -2,7 +2,7 @@
 
 <%= render 'form', post: @post %>
 <div class="text-center edit-links">
-  <%= link_to 'Назад', posts_path %>
+  <%= link_to 'Назад', root_path %>
   |
   <%= link_to 'Удалить пост', post_path(@post), method: :delete, data: { confirm: 'Вы уверены, что хотите удалить пост?' } %>
 </div>
