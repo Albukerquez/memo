@@ -1,4 +1,4 @@
-class ProfilePolicy < ApplicationPolicy
+class ProfilesPolicy < ApplicationPolicy
   def index?
     true
   end

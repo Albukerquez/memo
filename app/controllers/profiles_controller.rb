@@ -1,12 +1,16 @@
 class ProfilesController < ApplicationController
-  def edit
-    @user = User.find_by(user_name: params[:user_name])
-    authorize @profile
+  before_action :authenticate_user!
+  before_action :set_user
+  before_action :owned_profile, only: %i(edit update)
+  skip_after_action :verify_authorized
+
+  def show
+    @posts = @user.posts.includes(:comments).order(created_at: :desc)
   end
 
+  def edit; end
+
   def update
-    @user = User.find_by(user_name: params[:user_name])
-    authorize @profile
     if @user.update(profile_params)
       flash[:success] = 'Ваш профиль был обновлён.'
       redirect_to profile_path(@user.user_name)
@@ -17,13 +21,21 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show
-    @posts = User.find_by(user_name: params[:user_name]).posts.order(created_at: :desc)
-  end
-
   private
+
+  def set_user
+    @user = User.find_by(user_name: params[:user_name])
+  end
 
   def profile_params
     params.require(:user).permit(:avatar, :bio)
+  end
+
+  def owned_profile
+    @user = User.find_by(user_name: params[:user_name])
+    unless current_user == @user
+      flash[:alert] = 'Этот профиль вам не ваш!'
+      redirect_to root_path
+    end
   end
 end

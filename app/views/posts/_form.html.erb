@@ -17,7 +17,7 @@
                   <%= form.file_field :image, label: false, onChange: 'loadFile(event)' %>
                </div>
                <div class="form-group text-center">
-                 <%= form.text_area :description, label: false, id: :post_description, placeholder: 'Добавьте описание', class: 'form-control' %>
+                 <%= form.text_area :description, label: false, autofocus: true, id: :post_description, placeholder: 'Добавьте описание', class: 'form-control' %>
                </div>
                <div class="actions text-center">
                  <%= form.submit "Опубликовать", class: 'btn btn-success btn-block' %>
