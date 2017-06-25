@@ -3,18 +3,18 @@
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <%= link_to ' | MEMESgram', root_path, class: 'fa fa-maxcdn fa-lg navbar-brand' %>
+    <%= link_to ' Memento', root_path, class: 'fa-lg fa fa-linode navbar-brand' %>
     <div class="navbar-collapse collapse" id="collapsingNavbar3">
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <% if user_signed_in? %>
             <li class="nav-item">
-              <%= link_to 'Новый пост', new_post_path, class: "nav-link" if policy(Post).new? %>
+              <%= link_to ' Новый Пост', new_post_path, class: "fa fa-paper-plane-o nav-link" if policy(Post).new? %>
             </li>
             <li class="nav-item">
-              <%= link_to current_user.user_name, profile_path(current_user.user_name), class: "nav-link" %>
+              <%= link_to '', profile_path(current_user.user_name), class: "fa-lg fa fa-user-circle-o nav-link" %>
             </li>
             <li class="nav-item">
-              <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: "nav-link" %>
+              <%= link_to '', destroy_user_session_path, method: :delete, class: "fa-lg fa fa-sign-out nav-link" %>
             </li>
           <% else %>
             <li class="nav-item">
