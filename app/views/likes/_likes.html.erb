@@ -4,8 +4,8 @@
   <%= link_to '', like_path(post_id: post.id), remote: true, method: :post, class: 'fa-lg fa fa-heart-o like-button like' %>
 <% end %>
 
-<div>
-  <% if post.likes.count > 0 %>
+<p>
+  <% if post.likes.count.positive? %>
     <%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %>
   <% end %>
-</div>
+</p>
