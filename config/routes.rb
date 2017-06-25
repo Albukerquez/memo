@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  match 'like', to: 'likes#like', via: :post
+  match 'unlike', to: 'likes#unlike', via: :delete
+
   devise_scope :user do
     get '/register', to: 'devise/registrations#new', as: 'new_user_registration' # custom path to sign_up/registration
   end

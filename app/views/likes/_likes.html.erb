@@ -1,0 +1,11 @@
+<% if user_signed_in? && current_user.like?(post) %>
+  <%= link_to '', unlike_path(post_id: post.id), remote: true, method: :delete, class: 'fa-lg fa fa-heart like-button like' %>
+<% else %>
+  <%= link_to '', like_path(post_id: post.id), remote: true, method: :post, class: 'fa-lg fa fa-heart-o like-button like' %>
+<% end %>
+
+<div>
+  <% if post.likes.count > 0 %>
+    <%= post.likes.count %><%= ' like'.pluralize(post.likes.count) %>
+  <% end %>
+</div>

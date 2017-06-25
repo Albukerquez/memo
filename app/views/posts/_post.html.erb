@@ -16,6 +16,9 @@
       <% end %>
     </div>
     <div class="post-bottom">
+      <div class="likes" id="likes_<%= post.id %>" >
+        <%= render 'likes/likes', post: post %>
+      </div>
       <div class="description">
         <div class="description-content">
           <div class="user-name">
@@ -39,14 +42,9 @@
     </div>
     <% if policy(Comment).create? %>
     <div class="comment-like-form row">
-      <div class="like-button col-1">
-        <%= link_to '#' do %>
-          <i class="fa fa-heart-o"></i>
-        <% end %>
-      </div>
-      <div class="comment-form col-11">
+      <div class="comment-form col-12">
         <%= form_for [post, post.comments.build], remote: true do |f| %>
-          <% f.text_field :content, placeholder: 'Добавить комментарий', class: 'form-control comment_content',type: 'text', id: "comment_content_#{post.id}" %>
+          <% f.text_field :content, placeholder: 'Оставить комментарий...', class: 'form-control comment_content',type: 'text', id: "comment_content_#{post.id}" %>
         <% end %>
       </div>
     </div>

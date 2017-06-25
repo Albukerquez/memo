@@ -6,15 +6,6 @@
 @import 'components/posts';
 @import 'components/profiles';
 
-// .like {
-//   text-decoration: none;
-//   color: red;
-// }
-// .like-button a:hoover, a:focus {
-//   text-decoration: none;
-//   color: red;
-// }
-
 html, body {
   margin: 0;
   height: 100%;
@@ -103,4 +94,17 @@ html, body {
       color: #A5A7AA;
     }
   }
+}
+
+.like {
+  text-decoration: none !important;
+  color: red !important;
+}
+.like-button a:hoover, a:focus {
+  text-decoration: none !important;
+  color: red !important;
+}
+
+a:hover {
+  text-decoration: none;
 }

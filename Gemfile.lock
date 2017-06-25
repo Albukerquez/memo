@@ -121,8 +121,6 @@ GEM
       sexp_processor (~> 4.8)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
-    friendly_id (5.2.1)
-      activerecord (>= 4.0.0)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.1)
@@ -357,7 +355,6 @@ DEPENDENCIES
   erubis
   fastimage
   font-awesome-rails
-  friendly_id
   image_processing
   jbuilder (~> 2.5)
   jquery-rails

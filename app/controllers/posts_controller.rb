@@ -2,7 +2,7 @@
 
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: %i(show edit update destroy)
+  before_action :set_post, only: %i(show edit update destroy like)
   before_action :owned_post, only: %i(edit update destroy)
 
   def index
@@ -55,7 +55,7 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.friendly.find(params[:id])
+    @post = Post.find(params[:id])
     authorize @post
   end
 
