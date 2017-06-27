@@ -49,6 +49,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '~> 2.13.0'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end

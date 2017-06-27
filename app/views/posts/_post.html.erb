@@ -32,7 +32,7 @@
         <% if post.comments.any? %>
           <div class="paginator" id="#comments-paginator-<%= post.id %>">
             <% unless post.comments.count <= 4 %>
-              <strong><%= link_to "показать больше комментариев", post_comments_path(post), remote: true, class: 'more-comments', data: { post_id: "#{post.id}", type: "html" } %></strong>
+              <strong><%= link_to "показать больше комментариев #{post.comments.count}", post_comments_path(post), remote: true, class: 'more-comments', data: { post_id: "#{post.id}", type: "html" } %></strong>
             <% end %>
           </div>
             <%= render post.comments.includes(:user).last(4), post: post %>

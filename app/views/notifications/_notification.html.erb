@@ -1,0 +1,4 @@
+<li class='dropdown-item text-center'>
+  <%= link_to "#{notification.notified_by.user_name} has #{notification.notice_type}ed on your post", link_through_path(notification) %>
+  <%= time_ago_in_words notification.created_at %> ago
+</li>

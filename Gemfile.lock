@@ -10,6 +10,14 @@ GIT
       responders
       warden (~> 1.2.3)
 
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: ead87017a6c15adce66a87dce8ee2ece91d0d27c
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.0.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -108,6 +116,11 @@ GEM
     erubi (1.6.0)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     fastimage (2.1.0)
     ffi (1.9.18)
     flay (2.9.0)
@@ -349,10 +362,11 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
   bullet
   bundler-audit
-  capybara (~> 2.13.0)
+  capybara
   coffee-rails (~> 4.2)
   devise!
   erubis
+  factory_girl_rails
   fastimage
   font-awesome-rails
   image_processing
@@ -370,11 +384,12 @@ DEPENDENCIES
   pundit
   rails (~> 5.1.0)
   rails_best_practices
-  rspec-rails (~> 3.5)
+  rspec-rails
   rubocop
   rubycritic
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers!
   shrine
   slim
   spring

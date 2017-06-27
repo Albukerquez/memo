@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
+  get 'notifications', to: 'notifications#index'
+
   match 'like', to: 'likes#like', via: :post
   match 'unlike', to: 'likes#unlike', via: :delete
 

@@ -5,6 +5,7 @@
 @import 'components/wrapper';
 @import 'components/posts';
 @import 'components/profiles';
+@import 'components/notifications';
 
 html, body {
   margin: 0;
@@ -107,4 +108,11 @@ html, body {
 
 a:hover {
   text-decoration: none;
+}
+
+.notification-dropdown {
+  // margin-top: 10px;
+  button {
+    border: none;
+  }
 }
