@@ -11,7 +11,7 @@ class PostsController < ApplicationController
   end
 
   def browse
-    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(3)
+    @posts = Post.includes(:user, :comments).all.order(created_at: :desc).page(params[:page]).per(3)
     authorize @posts
     respond_to do |format|
       format.js
