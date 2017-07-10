@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
   get 'notifications', to: 'notifications#index'
 
+  get 'browse', to: 'posts#browse', as: :browse_posts
+
   match 'like', to: 'likes#like', via: :post
   match 'unlike', to: 'likes#unlike', via: :delete
 
@@ -27,6 +29,5 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  get 'browse', to: 'posts#browse', as: :browse_posts
   resource :friendships, only: %i(create destroy)
 end
