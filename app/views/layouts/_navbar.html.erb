@@ -15,7 +15,7 @@
               <%= link_to ' Новый Пост', new_post_path, class: "fa fa-paper-plane-o nav-link" if policy(Post).new? %>
             </li>
             <li class="nav-item">
-              <%= link_to ' Профиль', profile_path(current_user.user_name), class: "fa fa-user-circle-o nav-link" %>
+              <%= link_to current_user.user_name, profile_path(current_user.user_name), class: "fa fa-user-circle-o nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to ' Выйти', destroy_user_session_path, method: :delete, class: "fa fa-sign-out nav-link" %>

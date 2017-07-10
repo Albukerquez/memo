@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def browse
     @posts = Post.all.order(created_at: :desc).page(params[:page]).per(3)
+    authorize @posts
     respond_to do |format|
       format.js
       format.html
