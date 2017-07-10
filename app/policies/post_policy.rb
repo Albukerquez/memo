@@ -26,6 +26,10 @@ class PostPolicy < ApplicationPolicy
     user.present? && user == post.user
   end
 
+  def browse?
+    true
+  end
+
   private
 
   def post
