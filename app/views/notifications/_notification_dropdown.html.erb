@@ -6,10 +6,11 @@
     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
       <h6 class="dropdown-header text-center">Уведомления</h6>
       <ul class='text-center'>
-        <%= render current_user.notifications.order(created_at: :desc).last(5) %>
+        <%= render current_user.notifications.includes(:notified_by).order(created_at: :desc).last(5) %>
       </ul>
       <div class="dropdown-divider"></div>
       <%= link_to 'Посмотреть все', notifications_path, class: 'dropdown-item text-center' %>
     </div>
   </div>
 </li>
+

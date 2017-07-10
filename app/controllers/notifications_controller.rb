@@ -10,6 +10,6 @@ class NotificationsController < ApplicationController
   end
 
   def index
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.includes(:notified_by).order(created_at: :desc).page(params[:page]).per(5)
   end
 end
