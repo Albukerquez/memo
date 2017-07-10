@@ -26,4 +26,7 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  get 'browse', to: 'posts#browse', as: :browse_posts
+  resource :friendships, only: %i(create destroy)
 end

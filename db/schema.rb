@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170625200120) do
+ActiveRecord::Schema.define(version: 20170710130519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,26 @@ ActiveRecord::Schema.define(version: 20170625200120) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "following_id", null: false
+    t.integer "follower_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_follows_on_follower_id"
+    t.index ["following_id", "follower_id"], name: "index_follows_on_following_id_and_follower_id", unique: true
+    t.index ["following_id"], name: "index_follows_on_following_id"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["followed_id"], name: "index_friendships_on_followed_id"
+    t.index ["follower_id", "followed_id"], name: "index_friendships_on_follower_id_and_followed_id", unique: true
+    t.index ["follower_id"], name: "index_friendships_on_follower_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -49,21 +69,12 @@ ActiveRecord::Schema.define(version: 20170625200120) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
+    t.string "description"
     t.text "image_data"
-    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
-    t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -80,12 +91,10 @@ ActiveRecord::Schema.define(version: 20170625200120) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "user_name"
-    t.bigint "role_id"
     t.text "bio"
     t.text "avatar_data"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
     t.index ["user_name"], name: "index_users_on_user_name", unique: true
   end
 
@@ -95,5 +104,4 @@ ActiveRecord::Schema.define(version: 20170625200120) do
   add_foreign_key "notifications", "users"
   add_foreign_key "notifications", "users", column: "notified_by_id"
   add_foreign_key "posts", "users"
-  add_foreign_key "users", "roles"
 end

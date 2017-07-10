@@ -11,4 +11,6 @@ class Post < ApplicationRecord
 
   validates :user_id, :description, :image, presence: true
   validates :description, length: { in: 2..80 }
+
+  scope :of_followed_users, ->(following_users) { where user_id: following_users }
 end

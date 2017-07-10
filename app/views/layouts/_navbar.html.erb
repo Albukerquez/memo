@@ -9,6 +9,9 @@
           <% if user_signed_in? %>
             <%= render 'notifications/notification_dropdown' %>
             <li class="nav-item">
+              <%= link_to 'Browse Posts', browse_posts_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
               <%= link_to ' Новый Пост', new_post_path, class: "fa fa-paper-plane-o nav-link" if policy(Post).new? %>
             </li>
             <li class="nav-item">

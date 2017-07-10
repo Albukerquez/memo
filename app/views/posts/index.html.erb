@@ -1,6 +1,3 @@
-<div id="posts">
-  <%= render 'posts', cached: true %>
-</div>
-<div class="text-center", id="paginator">
-  <%= link_to_next_page @posts, 'ЗАГРУЗИТЬ ЕЩЁ', remote: true, id: 'load_more' %>
+<div>
+  <%= render 'post_dashboard', posts: @posts %>
 </div>

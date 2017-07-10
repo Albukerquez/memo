@@ -6,8 +6,16 @@ class PostsController < ApplicationController
   before_action :owned_post, only: %i(edit update destroy)
 
   def index
-    @posts = Post.includes(:user, :comments).all.order(created_at: :desc).page(params[:page]).per(3)
+    @posts = Post.of_followed_users(current_user.following).includes(:user, :comments).all.order(created_at: :desc).page(params[:page]).per(3)
     authorize @posts
+  end
+
+  def browse
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(3)
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def show; end
