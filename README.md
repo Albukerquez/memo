@@ -6,6 +6,6 @@
 
 * 2.shrine.
 
-* 3.devise.
+* 3.devise..
 
 * 4.project in process.....
