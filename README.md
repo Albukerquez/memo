@@ -4,7 +4,7 @@
 
 * 1.slim[in progress]
 
-* 2.shrine.
+* 2.shrine..
 
 * 3.devise..
 
